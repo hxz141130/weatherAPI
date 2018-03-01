@@ -53,11 +53,39 @@ public class trendata {
         List<Double> Ary_tenure=new ArrayList<>();
         List<Double> Ary_salary=new ArrayList<>();
         
-        analyze(Ary_age, employee,8);
-        analyze(Ary_tenure, employee,4);
-        analyze(Ary_salary, employee,3);
-        
-        
+        demo[] dAge=analyze(Ary_age, employee,8);
+        demo[] dTenure=analyze(Ary_tenure, employee,4);
+        demo[] dSalary=analyze(Ary_salary, employee,3);
+        double points=0;
+        Ai_algorithm a = new Ai_algorithm();
+        int ag=0,te=0,sa=0;
+        for(int h=1; h<10000; h++)
+        {
+        	if(employee[h][0]==null)
+        	{
+        		break;
+        	}
+        	for(int l=0;l<10;l++)
+        	{
+        		if(Double.parseDouble(employee[h][8])<(dAge[l].getMax()) && Double.parseDouble(employee[h][8])>=(dAge[l].getMin()))
+        		{
+        			ag=dAge[l].getRank();
+        			for(int o=0;o<10;o++)
+        			{
+        				if(Double.parseDouble(employee[h][4])<dTenure[l].getMax() && Double.parseDouble(employee[h][4])>=dTenure[l].getMin())
+        				{
+        					te=dTenure[l].getRank();
+        				for(int q=0;q<10;q++)
+        					if(Double.parseDouble(employee[h][3])<dSalary[l].getMax() && Double.parseDouble(employee[h][3])>=dSalary[l].getMin())
+        						sa=dSalary[l].getRank();
+        				}
+        			}
+        		
+        		}
+        		
+        	}
+        	score[h]=a.compute(ag,te,sa);
+        }
 
         
         
@@ -86,7 +114,7 @@ public class trendata {
        pw.close();
        reader.close();
     }
-    public static List<Double> analyze(List<Double> list, String[][] e, int i)
+    public static demo[] analyze(List<Double> list, String[][] e, int i)
     {
     	
         for(int x=1; x<10000; x++)
@@ -98,17 +126,62 @@ public class trendata {
             list.add(Double.parseDouble(e[x][i]));              
         }
         Collections.sort(list);
-        return list;
+        
+        //break list up into demos
+        int t = list.size()/10;
+        demo[] demoList = new demo[10];
+        for (int f = 0; f < 10; f++) {
+        	demoList[f] = new demo();
+        }
+        
+        for (int j = 0; j < 10; j++) {
+        	demoList[j].setMin(t*j);
+        	demoList[j].setMax(t*(j+1));
+        }
+        
+        //add population to each demo
+        for (demo d : demoList) {
+        	for (int a = 0; a < list.size(); a++) {
+        		if (d.inRange(list.get(a))){
+        			d.pop(); //add a value for each
+        		}
+        	}
+        }
+        
+        //find terminated ratios
+        for (int k = 0; k <10; k++) {
+        	double[] term_list = find_Terminated(e, i, t*k, t*(k+1));
+        	if (demoList[k].getPop() != 0) {
+        		demoList[k].setPercent(term_list.length/demoList[k].getPop()); 	
+        	}
+        	else {
+        		demoList[k].setPercent(0);
+        	}
+        }
+        List<Double> demoL=new ArrayList<>();
+        for (demo m:demoList)
+        {
+        	demoL.add(m.getPercent());
+        }
+        Collections.sort(demoL,Collections.reverseOrder());
+        for(int c=0;c<10;c++)
+        {
+        	for(int d=0;d<10;d++)
+        	{if(demoList[d].getPercent()==demoL.get(c))
+        		demoList[d].setRank(c+1);
+        			}
+        }
+        return demoList;
+        //return list;
     }
-    public static double[] find_Terminated(String[][] e, int x)//x is the index of column
+    public static double[] find_Terminated(String[][] e, int x,double min, double max)//x is the index of column
     {
     	double[] temp= new double[10000];
     	int count=0;
-    	for(int i=0;i<10000;i++)
-    	{
-    		if(e[i][x]==null)
+    	for(int i=1;i<10000;i++){
+    		if(e[i][x] == null)
     			break;
-    		if(Integer.parseInt(e[i][9])==1)
+    		if(Integer.parseInt(e[i][9])==1 && Double.parseDouble(e[i][x])<max && Double.parseDouble(e[i][x])>min)
     		{
     			temp[count]=Double.parseDouble(e[i][x]);
     			count++;
@@ -123,23 +196,4 @@ public class trendata {
     	
     }
     
-}
-
-
-public class Range {
-
-	int min,max;
-	public Range(int mi, int ma)
-	{
-		min=mi;
-		max=ma;
-	}
-	public int getMin()
-	{
-		return min;
-	}
-	public int getMax()
-	{
-		return max;
-	}
 }
