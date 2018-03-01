@@ -15,15 +15,15 @@ public class Ai_algorithm {
         salary=e_salary;
 //        pr=e_pr;
     }
-    public Ai_algorithm(String f, String m, String l, String a, String t, String s)
-    {
-        fname=f;
-        lname=l;
-        mname=m;
-        age=Integer.parseInt(a);
-        tenure=Integer.parseInt(t);
-        salary=Double.parseDouble(s);
-    }
+//     public Ai_algorithm(String f, String m, String l, String a, String t, String s)
+//     {
+//         fname=f;
+//         lname=l;
+//         mname=m;
+//         age=Integer.parseInt(a);
+//         tenure=Integer.parseInt(t);
+//         salary=Double.parseDouble(s);
+//     }
     public String getFirst()
     {
         return fname;
