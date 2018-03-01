@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+
 public class trendata {
 
     public static void main(String[] args) throws IOException {
@@ -36,7 +37,7 @@ public class trendata {
         PrintWriter pw = new PrintWriter(new File("Test.csv"));
         BufferedReader reader = new BufferedReader(new FileReader("Nurses.csv"));
         String line = "";
-        String [][] employee = new String[10000][10000];
+        String [][] employee = new String[10000][10];// Reader 2-D Array.
         List<String> lines = new ArrayList<>();
 
         double [] score= new double[10000];
@@ -47,15 +48,25 @@ public class trendata {
              lines.add(line);
             employee[y] =line.trim().split(",");
             y++;
-        }
+        }//parse lines into tokens into 2d array
+        List<Double> Ary_age= new ArrayList<>();
+        List<Double> Ary_tenure=new ArrayList<>();
+        List<Double> Ary_salary=new ArrayList<>();
+        
+        analyze(Ary_age, employee,8);
+        analyze(Ary_tenure, employee,4);
+        analyze(Ary_salary, employee,3);
         
         
-            for(int j=1;j<3000;j++)
-            {
-                Ai_algorithm a = new Ai_algorithm(employee[j][0],employee[j][1],employee[j][2],employee[j][8],employee[j][4],employee[j][3]);
-                score[j]=a.compute();
+
+        
+        
+//             for(int j=1;j<3000;j++)
+//             {
+//                 Ai_algorithm a = new Ai_algorithm(employee[j][0],employee[j][1],employee[j][2],employee[j][8],employee[j][4],employee[j][3]);
+//                 score[j]=a.compute();
                 
-            }
+//             }
 
        for(int z=0;z<lines.size();z++)
        {
@@ -75,7 +86,60 @@ public class trendata {
        pw.close();
        reader.close();
     }
-
+    public static List<Double> analyze(List<Double> list, String[][] e, int i)
+    {
+    	
+        for(int x=1; x<10000; x++)
+        {
+            if(e[x][i]==null)//8 is age 4 is tenure 3 is salary
+            {
+                break;
+            }
+            list.add(Double.parseDouble(e[x][i]));              
+        }
+        Collections.sort(list);
+        return list;
+    }
+    public static double[] find_Terminated(String[][] e, int x)//x is the index of column
+    {
+    	double[] temp= new double[10000];
+    	int count=0;
+    	for(int i=0;i<10000;i++)
+    	{
+    		if(e[i][x]==null)
+    			break;
+    		if(Integer.parseInt(e[i][9])==1)
+    		{
+    			temp[count]=Double.parseDouble(e[i][x]);
+    			count++;
+    		}
+    	}
+    	return temp;
+    }
+    public static int rank(double[] t, List<Double> l)
+    {
+    	
+		return 0;
+    	
+    }
+    
 }
 
 
+public class Range {
+
+	int min,max;
+	public Range(int mi, int ma)
+	{
+		min=mi;
+		max=ma;
+	}
+	public int getMin()
+	{
+		return min;
+	}
+	public int getMax()
+	{
+		return max;
+	}
+}
