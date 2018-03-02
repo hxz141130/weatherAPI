@@ -67,22 +67,22 @@ public class trendata {
         	}
         	for(int l=0;l<10;l++)
         	{
-        		if(Double.parseDouble(employee[h][8])<(dAge[l].getMax()) && Double.parseDouble(employee[h][8])>=(dAge[l].getMin()))
+        		if(dAge[l].inRange(Double.parseDouble(employee[h][8])))
         		{
         			ag=dAge[l].getRank();
-        			for(int o=0;o<10;o++)
-        			{
-        				if(Double.parseDouble(employee[h][4])<dTenure[l].getMax() && Double.parseDouble(employee[h][4])>=dTenure[l].getMin())
-        				{
-        					te=dTenure[l].getRank();
-        				for(int q=0;q<10;q++)
-        					if(Double.parseDouble(employee[h][3])<dSalary[l].getMax() && Double.parseDouble(employee[h][3])>=dSalary[l].getMin())
-        						sa=dSalary[l].getRank();
-        				}
-        			}
-        		
         		}
-        		
+        	}
+        	for(int o=0;o<10;o++) {
+        		if(dTenure[o].inRange(Double.parseDouble(employee[h][4])))
+        		{
+        			te=dTenure[o].getRank();
+        		}
+        	}
+        	for(int q=0;q<10;q++) {
+        		if(dSalary[q].inRange(Double.parseDouble(employee[h][3])))
+        		{
+        			sa=dSalary[q].getRank();
+        		}
         	}
         	score[h]=a.compute(ag,te,sa);
         }
