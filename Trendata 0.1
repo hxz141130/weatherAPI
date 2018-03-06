@@ -41,7 +41,7 @@ public class trendata {
         List<String> lines = new ArrayList<>();
 
         double [] score= new double[10000];
-        int i=10;
+//        int i=10;
         int y=0;
         while((line=reader.readLine())!=null){
 //            System.out.println(line);
@@ -61,34 +61,34 @@ public class trendata {
         double points=0;
         Ai_algorithm a = new Ai_algorithm();
         int ag=0,te=0,sa=0;
-//        for(int h=1; h<10000; h++)
-//        {
-//        	if(employee[h][0]==null)
-//        	{
-//        		break;
-//        	}
-//        	for(int l=0;l<10;l++)
-//        	{
-//        		if(dAge[l].inRange(Double.parseDouble(employee[h][8])))
-//        		{
-//        			ag=dAge[l].getRank();
-//        		}
-//        	}
-//        	for(int o=0;o<10;o++) {
-//        		if(dTenure[o].inRange(Double.parseDouble(employee[h][4])))
-//        		{
-//        			te=dTenure[o].getRank();
-//        		}
-//        	}
-//        	for(int q=0;q<10;q++) {
-//        		if(dSalary[q].inRange(Double.parseDouble(employee[h][3])))
-//        		{
-//        			sa=dSalary[q].getRank();
-//        		}
-//        	}
+        for(int h=1; h<10000; h++)
+        {
+        	if(employee[h][0]==null)
+        	{
+        		break;
+        	}
+        	for(int l=0;l<20;l++)
+        	{
+        		if(dAge[l].inRange(Double.parseDouble(employee[h][8])))
+        		{
+        			ag=dAge[l].getRank();
+        		}
+        	}
+        	for(int o=0;o<20;o++) {
+        		if(dTenure[o].inRange(Double.parseDouble(employee[h][4])))
+        		{
+        			te=dTenure[o].getRank();
+        		}
+        	}
+        	for(int q=0;q<20;q++) {
+        		if(dSalary[q].inRange(Double.parseDouble(employee[h][3])))
+        		{
+        			sa=dSalary[q].getRank();
+        		}
+        	}
 //        	System.out.println(ag+" "+te+" "+sa);
-//        	score[h]=a.compute(ag,te,sa);
-//        }
+        	score[h]=a.compute(ag,te,sa);
+        }
 
         
         
@@ -105,20 +105,21 @@ public class trendata {
        }
        
        int t=0;
-//       while(t<lines.size())
-//       {
-//           pw.append(lines.get(t));
-//           pw.append(System.lineSeparator());
-////           System.out.println(lines.get(t));
-//           t++;
-//       }
+       while(t<lines.size())
+       {
+           pw.append(lines.get(t));
+           pw.append(System.lineSeparator());
+//           System.out.println(lines.get(t));
+           t++;
+       }
        
        pw.flush();
        pw.close();
        reader.close();
     }
-    public static demo[] analyze(List<Double> list, String[][] e, int i)
+    public static demo[] analyze(List<Double> list, String[][] e, int i)//i for index of column, whether it is age, tenure, or salary
     {
+
     	
         for(int x=1; x<10000; x++)
         {
@@ -131,15 +132,50 @@ public class trendata {
         Collections.sort(list);
         
         //break list up into demos
-        int t = list.size()/10;
-        demo[] demoList = new demo[10];
-        for (int f = 0; f < 10; f++) {
+        demo[] demoList = new demo[20];
+        for (int f = 0; f < 20; f++) {
         	demoList[f] = new demo();
         }
-        
-        for (int j = 1; j < 10; j++) {
-        	demoList[j].setMin(Double.parseDouble(e[t*j][i]));
-        	demoList[j].setMax(Double.parseDouble(e[t*(j+1)][i]));
+        if(i==4)//the first demo is set.
+    	{
+    		demoList[0].setMax(500);
+    		demoList[0].setMin(0);
+    	}
+        if(i==8)
+    	{
+    		demoList[0].setMax(25);
+    		demoList[0].setMin(0);    		
+    	}
+        if(i==3)
+    	{
+    		demoList[0].setMax(30000);
+   			demoList[0].setMin(0);
+    	}
+        int counter=0;//counter is where we start.
+        for(int ind=0;ind<list.size();ind++)
+        {
+        	if(i==4)
+        	{
+        		if(list.get(ind)<500)
+        		counter++;
+        	}
+        	if(i==8)
+        	{
+        		if(list.get(ind)<25)
+        			counter++;
+        	}
+        	if(i==3)
+        	{
+        		if(list.get(ind)<30000)
+        		counter++;
+        	}
+        }
+        int t = (list.size()-counter)/19;
+        for (int j = 1; j < 20; j++) {        	
+        	demoList[j].setMin(counter+(j-1)*t);
+        	
+        	demoList[j].setMax(counter+j*t);
+//        	System.out.print(demoList[j].getMax()+" "+demoList[j].getMin()+" ");
         }
         
         //add population to each demo
@@ -154,12 +190,12 @@ public class trendata {
         	}       
         
         //find terminated ratios
-        for (int k = 1; k <10; k++) {
+        for (int k = 1; k <20; k++) {
 //        	List<Double> term_list = find_Terminated(e, i, t*k, t*(k+1));
         	if (demoList[k].getPop() != 0) {
 //        		System.out.println(demoList[k].getPop()+" "+demoList[k].getMax()+" "+demoList[k].getMin());
         		demoList[k].setPercent((double)(find_Terminated(e, i, demoList[k].getMin(), demoList[k].getMax()))/(double)(demoList[k].getPop()));
-        		System.out.println(demoList[k].getPercent()+" "+find_Terminated(e, i, demoList[k].getMin(), demoList[k].getMax())+" "+demoList[k].getPop());
+//        		System.out.println(demoList[k].getPercent()+" "+find_Terminated(e, i, demoList[k].getMin(), demoList[k].getMax())+" "+demoList[k].getPop());
         	}
         	else {
         		demoList[k].setPercent(0);
@@ -171,9 +207,9 @@ public class trendata {
         	demoL.add(m.getPercent());
         }
         Collections.sort(demoL,Collections.reverseOrder());
-        for(int c=0;c<10;c++)
+        for(int c=0;c<20;c++)
         {
-        	for(int d=0;d<10;d++)
+        	for(int d=0;d<20;d++)
         	{if(demoList[d].getPercent()==demoL.get(c))
         		demoList[d].setRank(c+1);
         			}
@@ -187,7 +223,7 @@ public class trendata {
     	for(int i=1;i<10000;i++){
     		if(em[i][x] == null)
     			break;
-    		if(Integer.parseInt(em[i][9])==1 && Double.parseDouble(em[i][x])<max && Double.parseDouble(em[i][x])>min)
+    		if(Integer.parseInt(em[i][9])==1 && Double.parseDouble(em[i][x])<=max && Double.parseDouble(em[i][x])>min)
     		{
 //    			temp.add(Double.parseDouble(em[i][x]));
     			count++;
