@@ -62,4 +62,8 @@ public class demo {
 	{
 		return max;
 	}
+	
+	public void setPopulation(int i) {
+		population = i;
+	}
 }
