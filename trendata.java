@@ -245,6 +245,69 @@ public class trendata {
         for (int f = 0; f < demoList.length; f++) {
         	demoList[f] = new demo();
         }
+	  for (int f = 0; f < demoList.length; f++) {
+        	demoList[f] = new demo();
+        }
+        int counter=0;//counter is where we start.
+        int counterLast=0;
+        
+        	if(i==tenureIndex)
+        	{
+//        		demoList[0].setMax(150);
+//        		demoList[9].setMin(10000);
+//        		demoList[9].setMax(list.get(list.size()-1));
+        
+        		for(int ind=0;ind<list.size();ind++)
+                {
+        			if(list.get(ind)<150)
+        			{
+        				list.remove(ind);
+        				counter++;
+        			}
+        			if(list.get(ind)>10000)
+        			{
+        				counterLast++;
+        				list.remove(ind);
+        			}
+        		}
+        	}
+        	if(i==ageIndex)
+        	{
+//        		demoList[0].setMax(25);
+//        		demoList[9].setMin(65);
+//        		demoList[9].setMax(list.get(list.size()-1));
+        		for(int ind=0;ind<list.size();ind++)
+                {
+        			if(list.get(ind)<25)
+        			{
+        				counter++;
+        				list.remove(ind);
+        			}
+        		if(list.get(ind)>65)
+        			{
+        				counterLast++;
+        				list.remove(ind);
+        			}
+                }
+        	}
+        	if(i==salaryIndex)//can change based on standard deviation of industry standard
+        	{
+
+//        		demoList[0].setMax(30000);
+//        		demoList[9].setMin(100000);
+//        		demoList[9].setMax(list.get(list.size()-1));
+        		for(int ind=0;ind<list.size();ind++)
+                {
+        			if(list.get(ind)<30000)
+        		{
+    				counter++;
+    				list.remove(ind);
+    			}
+        			if(list.get(ind)>100000)
+        			{counterLast++;
+        		list.remove(ind);}
+        	}
+        	}
         double mid=find_Average(list);
         List<Double> high = new ArrayList<>(), low=new ArrayList<>(), lowL=new ArrayList<>(), lowH=new ArrayList<>(), 
         		highL=new ArrayList<>(),highH=new ArrayList<>(), lowLL=new ArrayList<>(), lowLH=new ArrayList<>(),
