@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 
-public class trendata {
+public class algorithm0 {
 	
     static int DOBIndex = -1;
     static int salaryIndex = -1;
@@ -34,11 +34,11 @@ public class trendata {
         //It is then propagated to Array employee with the correct dimensions.
         
         PrintWriter pw = new PrintWriter(new File("Test.csv"));
-        BufferedReader reader = new BufferedReader(new FileReader("Test Data Set - 600.csv"));
+        BufferedReader reader = new BufferedReader(new FileReader("Nurse_Tuff.csv"));
         String line = "";
         List<String> lines = new ArrayList<>();
 
-        double [] score= new double[10000];
+        
         int y=0;
         while((line=reader.readLine())!=null){
              lines.add(line);
@@ -60,23 +60,31 @@ public class trendata {
         //Column +2 will be tenure
         
         String [][] employee = new String[lines.size()][width+5];
-        y=0;
+        double [] score= new double[lines.size()];
+        y=0;   
+        System.out.println();
         for (String l : lines) {
-        	String[] clone = new String[width+5];
-        	System.arraycopy(l.trim().split(","), 0, clone, 0, l.trim().split(",").length);
+        	String[] clone = new String[width];
+        	if(l=="")
+        	{
+        		break;
+        	}
+        	System.arraycopy(l.trim().split(","), 0, clone, 0, width);
+        	
         	employee[y] = clone;
-        	//employee[y] =l.trim().split(",");
+//        	employee[y] =l.trim().split(",");
+    
         	y++;
         }
        
         
-        for (int i = 0; i < employee.length; i++) {
-            for (int j = 0; j < width+5; j++) {
-                if (employee[i][j] == null) {
-                    employee[i][j] = "";
-                }
-            }
-        }
+//        for (int i = 0; i < employee.length; i++) {
+//            for (int j = 0; j < width+5; j++) {
+//                if (employee[i][j] == null) {
+//                    employee[i][j] = "";
+//                }
+//            }
+//        }
         
         ageIndex = width+1;
         tenureIndex = width+2;
@@ -91,6 +99,10 @@ public class trendata {
         
         
         for (int i = 0; i < employee[0].length; i++ ) {
+        	if(employee[0][i]==null)//if we encounter nulls that means we are at the end of the file
+        	{
+        		break;
+        	}
         	if (employee[0][i].equals("DOB")) {
         		DOBIndex = i;
         	}
@@ -131,9 +143,12 @@ public class trendata {
 	        if (employee[i][terminationIndex].equals("1")){
         	try {
 				d1 = format.parse(employee[i][hireIndex]);
+				
 				d2 = format.parse(employee[i][fireIndex]);
+//				System.out.println(employee[i][hireIndex]);
 			} catch (ParseException e) {
 				e.printStackTrace();
+//				System.out.println(i);
 			}
 	        	employee[i][tenureIndex] = (d2.getTime() - d1.getTime()) / (1000*60*60*24*365) + "";
         	}
@@ -225,9 +240,9 @@ public class trendata {
     	
         for(int x=1; x<e.length; x++)
         {
-            if(e[x][i]==null)
+            if(e[x][i]==null||e[x][i].equals(""))
             {
-                break;
+                x++;
             }
 //            if(e[x][i].charAt(0)=='$')
 //            {
@@ -276,38 +291,38 @@ public class trendata {
 //        		demoList[0].setMax(25);
 //        		demoList[9].setMin(65);
 //        		demoList[9].setMax(list.get(list.size()-1));
-        		for(int ind=0;ind<list.size();ind++)
-                {
-        			if(list.get(ind)<25)
-        			{
-        				counter++;
-        				list.remove(ind);
-        			}
-        		if(list.get(ind)>65)
-        			{
-        				counterLast++;
-        				list.remove(ind);
-        			}
-                }
+//        		for(int ind=0;ind<list.size();ind++)
+//                {
+//        			if(list.get(ind)<25)
+//        			{
+//        				counter++;
+//        				list.remove(ind);
+//        			}
+//        		if(list.get(ind)>65)
+//        			{
+//        				counterLast++;
+//        				list.remove(ind);
+//        			}
+//                }
         	}
-        	if(i==salaryIndex)//can change based on standard deviation of industry standard
-        	{
-
-//        		demoList[0].setMax(30000);
-//        		demoList[9].setMin(100000);
-//        		demoList[9].setMax(list.get(list.size()-1));
-        		for(int ind=0;ind<list.size();ind++)
-                {
-        			if(list.get(ind)<30000)
-        		{
-    				counter++;
-    				list.remove(ind);
-    			}
-        			if(list.get(ind)>100000)
-        			{counterLast++;
-        		list.remove(ind);}
-        	}
-        	}
+//        	if(i==salaryIndex)//can change based on standard deviation of industry standard
+//        	{
+//
+////        		demoList[0].setMax(30000);
+////        		demoList[9].setMin(100000);
+////        		demoList[9].setMax(list.get(list.size()-1));
+//        		for(int ind=0;ind<list.size();ind++)
+//                {
+//        			if(list.get(ind)<30000)
+//        		{
+//    				counter++;
+//    				list.remove(ind);
+//    			}
+//        			if(list.get(ind)>100000)
+//        			{counterLast++;
+//        		list.remove(ind);}
+//        	}
+//        	}
         double mid=find_Average(list);
         List<Double> high = new ArrayList<>(), low=new ArrayList<>(), lowL=new ArrayList<>(), lowH=new ArrayList<>(), 
         		highL=new ArrayList<>(),highH=new ArrayList<>(), lowLL=new ArrayList<>(), lowLH=new ArrayList<>(),
