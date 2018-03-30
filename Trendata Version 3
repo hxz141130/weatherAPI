@@ -38,7 +38,7 @@ public class trendata {
         String line = "";
         List<String> lines = new ArrayList<>();
 
-        double [] score= new double[10000];
+        
         int y=0;
         while((line=reader.readLine())!=null){
              lines.add(line);
@@ -81,7 +81,7 @@ public class trendata {
         ageIndex = width+1;
         tenureIndex = width+2;
         terminationIndex = width+3;
-        
+        double [] score= new double[lines.size()];
         //3 available metrics for data analysis
         List<Double> Ary_age= new ArrayList<>();
         List<Double> Ary_tenure=new ArrayList<>();
@@ -109,7 +109,7 @@ public class trendata {
         }
         
         SimpleDateFormat format = new SimpleDateFormat("MM/dd/yy");
-        SimpleDateFormat format2 = new SimpleDateFormat("M/dd/yy");
+//        SimpleDateFormat format2 = new SimpleDateFormat("M/dd/yy");
 
         Date d1 = null;
         Date d2 = new Date();
