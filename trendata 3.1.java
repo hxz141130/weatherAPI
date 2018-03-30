@@ -166,16 +166,6 @@ public class trendata {
         	}
         }
         
-    	for (int i = 0; i < employee[0].length; i++)
-    	{
-    		System.out.print(i + ": " + employee[130][i] + " ");
-    	}
-    	System.out.println();
-    	for (int i = 0; i < employee[0].length; i++)
-    	{
-    		System.out.print(i + ": " + employee[131][i] + " ");
-    	}
-        
         demo[] dAge=analyze(Ary_age, employee,ageIndex);
         demo[] dTenure=analyze(Ary_tenure, employee,tenureIndex);
         demo[] dSalary=analyze(Ary_salary, employee,salaryIndex);
