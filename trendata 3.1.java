@@ -72,11 +72,18 @@ public class trendata {
         	String[] clone = new String[width+5];
         	
         	
-        	//detect quotation marks - delete whatever's inside them
-        	l = l.replaceAll("\"(.*?)\"","address removed");
-        	//this will keep addresses containing commas from throwing off 
-        	//the rest of the program
-        	//TODO figure out how to preserve problem addresses in their own space
+        	//detect strings containing quotation marks
+        	//which signify the existence of a comma between them
+        	//and replace the comma with a period 
+        	int firstIndex = l.indexOf('"');
+        	int lastIndex = l.lastIndexOf('"');
+        	String addressString;
+        	if ((firstIndex != -1) && (lastIndex != -1))
+        	{
+        		addressString = l.substring(firstIndex, lastIndex+1);
+        		addressString = addressString.replaceAll(",", ".");
+            	l = l.replaceAll("\"(.*?)\"", addressString);
+        	}
         	
         	
         	System.arraycopy(l.trim().split(","), 0, clone, 0, l.trim().split(",").length);
