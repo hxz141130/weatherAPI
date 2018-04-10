@@ -359,7 +359,7 @@ public class trenData {
         	{
         		System.out.println("Your input is out of range");
         	}
-        	else if(maxa <= lowLM && maxa <= lowLM )
+        	else if(maxa <= lowLM && maxa <= lowLM )		//shouldn't the first maxa be mini?
         	{
         		
         	}
