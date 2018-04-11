@@ -194,8 +194,8 @@ public class trenData {
         demo[] dTenure=analyze(Ary_tenure, employee,tenureIndex);
         demo[] dSalary=analyze(Ary_salary, employee,salaryIndex);*/
         
-        demo[] dAge=analyze(Ary_age, employee,ageIndex, 0, "", "");
-        demo[] dTenure=analyze(Ary_tenure, employee,tenureIndex, 0, "", "");
+        demo[] dAge=analyze(Ary_age, employee,ageIndex, 0, null, null);
+        demo[] dTenure=analyze(Ary_tenure, employee,tenureIndex, 0, null, null);
         demo[] dSalary=analyze(Ary_salary, employee,salaryIndex, SP, range[0], range[2]);
         
         System.out.println("AGE");
@@ -353,41 +353,656 @@ public class trenData {
         	demoList[6].setMax(highHM);
         	demoList[7].setMin(highHM+1);
         	//
+        	if (i == salaryIndex)
+        	{
         	double mini = Double.parseDouble(min);
         	double maxa = Double.parseDouble(max);
         	if (mini < 0 || maxa > mid*2)
         	{
         		System.out.println("Your input is out of range");
         	}
-        	else if(maxa <= lowLM && maxa <= lowLM )		//shouldn't the first maxa be mini?
+        	else if(mini <= lowLM && maxa <= lowLM )
         	{
+        		for(int j =0; j<= lowLL.size()-1; j++)
+        		{
+        			lowLL.set(j, lowLL.get(j)*rate);
+        		}
         		
         	}
         	else if(mini <= lowLM && maxa <= lowM)
         	{
+        		for(int j =0; j<= lowLL.size()-1; j++)
+        		{
+        			lowLL.set(j, lowLL.get(j)*rate);
+        		}
+        		for(int j=0; j<=lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
         		
         	}
         	else if(mini <= lowLM && maxa <= lowHM )
         	{
+        		for(int j =0; j<= lowLL.size()-1; j++)
+        		{
+        			lowLL.set(j, lowLL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
         		
         	}
         	else if(mini <= lowLM && maxa <= mid)
         	{
+        		for(int j =0; j<= lowLL.size()-1; j++)
+        		{
+        			lowLL.set(j, lowLL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
         		
         	}
         	else if(mini <= lowLM && maxa <= highLM)
         	{
+        		for(int j =0; j<= lowLL.size()-1; j++)
+        		{
+        			lowLL.set(j, lowLL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
         		
         	}
         	else if(mini <= lowLM && maxa <= highM)
         	{
+        		for(int j =0; j<= lowLL.size()-1; j++)
+        		{
+        			lowLL.set(j, lowLL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
         		
         	}
         	else if(mini <= lowLM && maxa <= highHM)
         	{
+        		for(int j =0; j<= lowLL.size()-1; j++)
+        		{
+        			lowLL.set(j, lowLL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		for(int j=0; j<= highHL.size()-1; j++)
+        		{
+        			highHL.set(j, highHL.get(j)*rate);
+        		}
         		
         	}
-        	else if(mini <= lowM)
+        	else if(mini <= lowLM && maxa <= mid*2)
+        	{
+        		for(int j =0; j<= lowLL.size()-1; j++)
+        		{
+        			lowLL.set(j, lowLL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		for(int j=0; j<= highHL.size()-1; j++)
+        		{
+        			highHL.set(j, highHL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHH.size()-1; j++)
+        		{
+        			highHH.set(j, highHH.get(j)*rate);
+        		}
+        		
+        	}
+        	else if(mini <= lowM && maxa <= lowM)
+        	{
+        		for(int j =0; j<= lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
+        		
+        	}
+        	else if(mini <= lowM && maxa <= lowHM)
+        	{
+        		for(int j =0; j<= lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        	}
+        	else if(mini <= lowM && maxa <= mid)
+        	{
+        		for(int j =0; j<= lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= lowM && maxa <= highLM)
+        	{
+        		for(int j =0; j<= lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		
+        	}
+        	else if(mini <= lowM && maxa <= highM)
+        	{
+        		for(int j =0; j<= lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		
+        	}
+        	else if(mini <= lowM && maxa <= highHM)
+        	{
+        		for(int j =0; j<= lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHL.size()-1; j++)
+        		{
+        			highHL.set(j, highHL.get(j)*rate);
+        		}
+        		
+        	}
+        	else if(mini <= lowM && maxa <= mid*2)
+        	{
+        		for(int j =0; j<= lowLH.size()-1; j++)
+        		{
+        			lowLH.set(j, lowLH.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHL.size()-1; j++)
+        		{
+        			highHL.set(j, highHL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHH.size()-1; j++)
+        		{
+        			highHH.set(j, highHH.get(j)*rate);
+        		}
+        		
+        	}
+        	else if(mini <= lowHM && maxa <= lowHM)
+        	{
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= lowHM && maxa <= mid)
+        	{
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		
+        	}
+        	else if(mini <= lowHM && maxa <= highLM)
+        	{
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		
+        	}
+        	else if(mini <= lowHM && maxa <= highM)
+        	{
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		
+        	}
+        	else if(mini <= lowHM && maxa <= highHM)
+        	{
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHL.size()-1; j++)
+        		{
+        			highHL.set(j, highHL.get(j)*rate);
+        		}
+        		
+        	}
+        	else if(mini <= lowHM && maxa <= mid*2)
+        	{
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        		
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHL.size()-1; j++)
+        		{
+        			highHL.set(j, highHL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHH.size()-1; j++)
+        		{
+        			highHH.set(j, highHH.get(j)*rate);
+        		}
+        		
+        	}
+        	else if(mini <= mid && maxa <= mid)
+        	{
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        	}
+        	
+        	else if(mini <= mid && maxa <= highLM)
+        	{
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= mid && maxa <= highM)
+        	{
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= mid && maxa <= highHM)
+        	{
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		for(int j =0; j<= lowHL.size()-1; j++)
+        		{
+        			lowHL.set(j, lowHL.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= mid && maxa <= mid*2)
+        	{
+        		for(int j =0; j<= lowHH.size()-1; j++)
+        		{
+        			lowHH.set(j, lowHH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHL.size()-1; j++)
+        		{
+        			highHL.set(j, highHL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHH.size()-1; j++)
+        		{
+        			highHH.set(j, highHH.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= highLM && maxa <= highLM)
+        	{
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= highLM && maxa <= highM)
+        	{
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= highLM && maxa <= highHM)
+        	{
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHL.size()-1; j++)
+        		{
+        			highHL.set(j, highHL.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= highLM && maxa <= mid*2)
+        	{
+        		for(int j =0; j<= highLL.size()-1; j++)
+        		{
+        			highLL.set(j, highLL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHL.size()-1; j++)
+        		{
+        			highHL.set(j, highHL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHH.size()-1; j++)
+        		{
+        			highHH.set(j, highHH.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= highM && maxa <= highM)
+        	{
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= highM && maxa <= highHM)
+        	{
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHL.size()-1; j++)
+        		{
+        			highHL.set(j, highHL.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= highM && maxa <= mid*2)
+        	{
+        		for(int j =0; j<= highLH.size()-1; j++)
+        		{
+        			highLH.set(j, highLH.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHL.size()-1; j++)
+        		{
+        			highHL.set(j, highHL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHH.size()-1; j++)
+        		{
+        			highHH.set(j, highHH.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= highHM && maxa <= highHM)
+        	{
+        		for(int j =0; j<= highHL.size()-1; j++)
+        		{
+        			highHL.set(j, highHL.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= highHM && maxa <= mid*2)
+        	{
+        		for(int j =0; j<= highHL.size()-1; j++)
+        		{
+        			highHL.set(j, highHL.get(j)*rate);
+        		}
+        		for(int j =0; j<= highHH.size()-1; j++)
+        		{
+        			highHH.set(j, highHH.get(j)*rate);
+        		}
+        	}
+        	else if(mini <= mid*2 && maxa <=mid*2)
+        	{
+        		for(int j =0; j<= highHH.size()-1; j++)
+        		{
+        			highHH.set(j, highHH.get(j)*rate);
+        		}
+        	}
+        	
         	//this fixes a dumb bug regarding when there are no entries in a column
         	if (list.size() > 0) {
         		demoList[7].setMax(list.get(list.size()-1));
@@ -435,6 +1050,7 @@ public class trenData {
             	else
             		highHH.add(highH.get(p));
             }
+        	}
         demoList[0].setPopulation(lowLL.size());
         demoList[1].setPopulation(lowLH.size());
         demoList[2].setPopulation(lowHL.size());
