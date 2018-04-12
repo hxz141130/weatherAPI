@@ -35,34 +35,7 @@ public class trendata {
         //rate is the conversion of percentage that user had inputed to actual value.
         
         //
-        System.out.println("Enter the range of salary you want to make change to(in this format:'number - number'):");
-        //user inputs for the range of salary they wish to be modified.
-        Scanner ca = new Scanner(System.in);
-        category = ca.nextLine();
-        String[] range = category.split("\\s");
-        System.out.println(range[0] + " " + range[1] + " " + range[2]);
-        //getting the values from the user input
 
-        
-        System.out.println("Enter the new salary rate of increase, or negative for decrease(Please enter a number in this format:'number%'):");
-        //user inputs the rate of increase or decrease they wish to make on the range of salaries they
-        //inputed earlier.
-        Scanner p = new Scanner(System.in);
-        salary_rate = p.nextLine();
-        //get rid of '%'
-        rate = salary_rate.trim().replace("%", "");
-        SP = Double.parseDouble(rate)/100;
-        if(SP>=0)//user decides to increase the salary
-        {
-        	SP=1+SP;
-        }
-        else if(SP<0)//user decides to decrease the salary
-        {
-        	SP=1-SP;
-        }
-        //find the salary range for the user is in which categories
-      
-     
         
         
         //ArrayList lines is meant to find the exact dimensions of input. 
@@ -98,7 +71,39 @@ public class trendata {
        lines.set(130, lines.get(130).replaceAll("\"(.*?)\"","no"));
        System.out.println(lines.get(130));*/
        
+        System.out.println("Enter the range of salary you want to make change to(in this format:'number - number'):");
+        //user inputs for the range of salary they wish to be modified.
+        Scanner ca = new Scanner(System.in);
+        category = ca.nextLine();
+        String[] range = category.split("\\s");
+        System.out.println(range[0] + " " + range[1] + " " + range[2]);
+        //getting the values from the user input
 
+        
+        System.out.println("Enter the new salary rate of increase, or negative for decrease(Please enter a number in this format:'number%'):");
+        //user inputs the rate of increase or decrease they wish to make on the range of salaries they
+        //inputed earlier.
+        Scanner p = new Scanner(System.in);
+        salary_rate = p.nextLine();
+        //get rid of '%'
+        rate = salary_rate.trim().replace("%", "");
+        SP = Double.parseDouble(rate)/100;
+        if(SP>=0)//user decides to increase the salary
+        {
+        	SP=1+SP;
+        }
+        else if(SP<0)//user decides to decrease the salary
+        {
+        	SP=1-SP;
+        }
+        //find the salary range for the user is in which categories
+      System.out.println("Do you wish to reset? (return everything back to the original file), please enter'Yes or No': ");
+      Scanner reset = new Scanner(System.in);
+      String reset_Response=reset.next();
+      if(reset_Response.equals("Yes"))
+      {
+    	  
+      }    
     	
         String [][] employee = new String[lines.size()][width+5];
         double [] score= new double[lines.size()];
