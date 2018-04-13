@@ -121,16 +121,8 @@ public class trendata {
         	{
         		addressString = l.substring(firstIndex, lastIndex+1);
         		
-        		if (l.charAt(firstIndex+1) == '$')
-        		{
-        			addressString = addressString.replaceAll(",", "");
-        		}
-        		else
-        		{
-        			//System.out.println(addressString);
-        			addressString = addressString.replaceAll(",", ".");
-        		}
-            	l = l.replaceAll("\"(.*?)\"", Matcher.quoteReplacement(addressString));
+        		addressString = addressString.replaceAll("\\$|,|\"", "");
+            		l = l.replaceAll("\"(.*?)\"", Matcher.quoteReplacement(addressString));
         	}
         	//this will keep addresses containing commas from throwing off 
         	//the rest of the program
