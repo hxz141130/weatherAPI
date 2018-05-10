@@ -1,6 +1,0 @@
-Test<-read.csv("Senior II/Trendata/Ai/Test.csv") ##read file from my directory
-Test$Termination <- factor(Test$Termination)## factorize field termination
-plot(Test$Termination~Test$X0.0)##plot
-cdplot(Test$X0.0,Test$Termination)## plot density plot
-
-summary(Test[Test$X0.0<20,])##summary of the values for testing purposes
